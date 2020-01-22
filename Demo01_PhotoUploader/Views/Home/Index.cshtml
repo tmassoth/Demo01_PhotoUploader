@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div style="margin: 0px auto; width: 800px; height:150px; text-align: left;">
+        <p>Select a file:</p>
+        <input type="file" name="uploadedFile" /><br /><br />
+        <input type="submit" value="Upload" /><br /><br /><br />
+    </div>
+    if (ViewBag.ImageUrl != null)
+    {
+        <img alt="Uploaded Image" src="@ViewBag.ImageUrl" with="800px" height="600px" />
+    }
+    if( ViewBag.filename != null)
+    {
+        <br />
+        <b style="color:red;">Uploaded file is not an image (*.jpg, *.jpeg, *.gif, *.tiff, *.tif or *.png):</b><br /><br />
+        <b style="color:red;">@ViewBag.filename</b>
+    }
+}
